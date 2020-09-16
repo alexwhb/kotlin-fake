@@ -1,5 +1,5 @@
 package providers.definition
 
-interface UuidProvider {
+interface UuidProvider : Provider{
     val uuid: String
 }
