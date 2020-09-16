@@ -1,10 +1,8 @@
 package providers.definition
 
-interface MiscellaneousProvider {
-
+interface MiscellaneousProvider: Provider {
     val boolean: Boolean
-    fun boolean(chanceOfGettingTrue:Int = 50)
-
+    fun boolean(chanceOfGettingTrue:Int = 50):Boolean
     val md5: String
     val sha1: String
     val sha256: String
