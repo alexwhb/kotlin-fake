@@ -225,6 +225,13 @@ class Fake {
 
         fun lorem(): LoremProvider = getProvider("lorem") { LoremProviderImp() } as LoremProvider
 
+        fun biased(): BiasedProvider = getProvider("biased") { BiasedProviderImp() } as BiasedProvider
+
+        fun misc(): MiscellaneousProvider = getProvider("misc") { MiscellaneousProviderImp() } as MiscellaneousProvider
+
+        fun uuid(): UuidProvider = getProvider("uuid") { UuidProviderImp() } as UuidProvider
+
+        fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
     }
 }
 
