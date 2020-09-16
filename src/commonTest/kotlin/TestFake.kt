@@ -6,7 +6,7 @@ class TestFake {
     @Test
     fun `it should provide a fake name`() {
         Fake.init()
-        val name = Fake.name().name()
+        val name = Fake.name().name
         assertNotNull(name)
         assertTrue(name.split(" ").size == 2)
     }
@@ -14,7 +14,7 @@ class TestFake {
     @Test
     fun `it should provide a fake first name`() {
         Fake.init()
-        val fistName = Fake.name().firstName()
+        val fistName = Fake.name().firstName
 
         assertNotNull(fistName)
     }
@@ -22,11 +22,11 @@ class TestFake {
     @Test
     fun `it should provide an address`() {
         Fake.init()
-        val streetAddress = Fake.address().streetAddress()
-        val city = Fake.address().city()
-        val state = Fake.address().state()
-        val stateAbrev = Fake.address().stateAbbreviation()
-        val zip = Fake.address().zipCode()
+        val streetAddress = Fake.address().streetAddress
+        val city = Fake.address().city
+        val state = Fake.address().state
+        val stateAbrev = Fake.address().stateAbbreviation
+        val zip = Fake.address().zipCode
 
         assertNotNull(streetAddress)
         assertNotNull(city)
@@ -40,7 +40,7 @@ class TestFake {
     fun `it should create a formatted date`() {
         Fake.init()
 
-        val date = Fake.dateTime().dateFormatter()
+        val date = Fake.dateTime().dateFormatter
 
         assertNotNull(date)
         assertPatternMatches(date, "[0-9]{2}/[0-9]{2}/[0-9]{4}")
@@ -51,9 +51,9 @@ class TestFake {
     fun `it should return demographic data`() {
         Fake.init()
 
-        val race = Fake.demographic().race()
-        val sex = Fake.demographic().sex()
-        val maritalStatus = Fake.demographic().maritalStatus()
+        val race = Fake.demographic().race
+        val sex = Fake.demographic().sex
+        val maritalStatus = Fake.demographic().maritalStatus
 
         assertNotNull(race)
         assertNotNull(maritalStatus)
@@ -64,8 +64,8 @@ class TestFake {
     fun `it should return file data`() {
         Fake.init()
 
-        val mimeType = Fake.file().mimeType()
-        val extension = Fake.file().extension()
+        val mimeType = Fake.file().mimeType
+        val extension = Fake.file().extension
 
         assertNotNull(mimeType)
         assertNotNull(extension)
