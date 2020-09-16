@@ -1,4 +1,3 @@
-import kotlinx.serialization.descriptors.StructureKind
 import kotlin.random.Random
 import kotlin.reflect.KClass
 
@@ -10,6 +9,8 @@ import kotlin.reflect.KClass
 //}
 
 expect fun <T : Any> getResourcePath(klass:KClass<T>, path:String):String
+
+expect fun String.format(local: String, vararg args: Any?): String
 
 operator fun StringBuilder.plus(str: String) {
     this.append(str)
@@ -29,6 +30,12 @@ fun Char.getNumericValue(): Int {
         throw NumberFormatException()
     }
     return this.toInt() - '0'.toInt()
+}
+
+fun String.shuffle(): String {
+    val str = this.toCharArray()
+    str.shuffle()
+    return str.concatToString()
 }
 
 data class CharSet(val chars: String, val random: Random = Random.Default) {
