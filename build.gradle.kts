@@ -37,6 +37,8 @@ kotlin {
                 implementation("suparnatural-kotlin-multiplatform:fs-metadata:$fs_version")
                 implementation("net.mamoe.yamlkt:yamlkt:0.5.1")
 
+                implementation("com.soywiz.korlibs.krypto:krypto:1.12.0")
+
                 implementation( "com.benasher44:uuid:0.2.2")
                 implementation("com.soywiz.korlibs.klock:klock:$klock_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC")
