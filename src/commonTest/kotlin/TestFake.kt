@@ -179,6 +179,59 @@ class TestFake {
         assertNotEquals(biasedNumber, biasedNumber2)
     }
 
+    @Test
+    fun `it should shuffle string`(){
+        val t = "somethingreallylong".shuffle()
+        assertNotEquals(t, "somethingreallylong")
+    }
+
+    @Test
+    fun `it should produce a hex color code`(){
+        Fake.init()
+        val t = Fake.color().hexColor
+        assertNotNull(t)
+        assertLength(t, 7)
+        assertTrue(t.startsWith("#"))
+    }
+
+    @Test
+    fun `it should produce a safe hex color code`(){
+        Fake.init()
+        val t = Fake.color().safeHexColor
+        assertNotNull(t)
+        assertLength(t, 7)
+        assertTrue(t.startsWith("#"))
+    }
+
+    @Test
+    fun `it should generate an RGB value`(){
+        Fake.init()
+        val t = Fake.color().cssRgbColor
+        assertTrue(t.startsWith("rgb("))
+        assertNotNull(t)
+    }
+
+    @Test
+    fun `it should generate an RGBA value`(){
+        Fake.init()
+        val t =  Fake.color().rgbaCssColor
+
+        assertTrue(t.startsWith("rgba("))
+        assertNotNull(t)
+    }
+
+    @Test
+    fun `it should return a color string`(){
+        Fake.init()
+        val colorStr = Fake.color().colorName
+
+        assertTrue(colorStr.length > 3, "color string: $colorStr was not longer than 3 characters")
+    }
+
+    private fun assertLength(str: String, expectedLength: Int) {
+        assertEquals(str.length, expectedLength, "String: $str is ${str.length}.. not $expectedLength")
+    }
+
     private fun assertNumberBetween(numberToBeTested: Double, min: Double, max: Double, message: String = "") {
         assertTrue (numberToBeTested in min..max, "Number: $numberToBeTested was not in range $min to $max. $message")
     }
