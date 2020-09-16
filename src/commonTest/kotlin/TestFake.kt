@@ -1,3 +1,4 @@
+import kotlin.math.sqrt
 import kotlin.test.*
 
 
@@ -98,6 +99,88 @@ class TestFake {
 
         assertNotNull(paragraph)
         assertTrue(paragraph.split(".").size > 2)
+    }
+
+
+    @Test
+    fun `it should create an MD5 hash`(){
+        Fake.init()
+        val hash = Fake.misc().md5
+        val hash2 = Fake.misc().md5
+
+        assertNotNull(hash)
+        assertNotEquals(hash, hash2)
+        assertEquals(32, hash.length)
+    }
+
+    @Test
+    fun `it should create a UUID`() {
+        Fake.init()
+        val uuid = Fake.uuid().uuid
+
+        assertNotNull(uuid)
+    }
+
+    @Test
+    fun `it should create a sha1 hash`(){
+        Fake.init()
+        val hash = Fake.misc().sha1
+        val hash2 = Fake.misc().sha1
+
+        assertNotNull(hash)
+        assertNotEquals(hash, hash2)
+        assertEquals(40, hash.length)
+    }
+
+    @Test
+    fun `it should create a sha256 hash`(){
+        Fake.init()
+        val hash = Fake.misc().sha256
+        val hash2 = Fake.misc().sha256
+
+        assertNotNull(hash)
+        assertNotEquals(hash, hash2)
+        assertEquals(64, hash.length)
+    }
+
+
+    @Test
+    fun `it should create an isbn10 code`() {
+        Fake.init()
+        val isbn = Fake.barcode().isbn10
+        val isbn1 = Fake.barcode().isbn10
+
+        assertNotNull(isbn)
+        assertNotNull(isbn1)
+        assertNotEquals(isbn, isbn1)
+        assertEquals(10, isbn.length)
+    }
+
+    @Test
+    fun `it should create an ISBN13 code`(){
+        Fake.init()
+        val isbn = Fake.barcode().isbn13
+        val isbn1 = Fake.barcode().isbn13
+
+        assertNotNull(isbn)
+        assertNotNull(isbn1)
+        assertNotEquals(isbn, isbn1)
+        assertEquals(13, isbn.length)
+    }
+
+    @Ignore
+    @Test
+    fun `it should return a biased number`(){
+        Fake.init()
+        val biasedNumber = Fake.biased().biasedNumberBetween { sqrt(it) }
+        val biasedNumber2 = Fake.biased().biasedNumberBetween { sqrt(it) }
+
+        assertNumberBetween(biasedNumber, 10.0, 20.0)
+        assertNotEquals(biasedNumber, biasedNumber2)
+    }
+
+    private fun assertNumberBetween(numberToBeTested: Double, min: Double, max: Double, message: String = "") {
+        assertTrue (numberToBeTested in min..max, "Number: $numberToBeTested was not in range $min to $max. $message")
     }
 
     private fun assertPatternMatches(text: String, pattern: String, message: String = "") {
