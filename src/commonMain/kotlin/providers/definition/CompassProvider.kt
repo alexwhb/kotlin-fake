@@ -1,7 +1,6 @@
 package providers.definition
 
 interface CompassProvider : Provider {
-
     val cardinal: String
     val ordinal: String
     val half_wind: String
