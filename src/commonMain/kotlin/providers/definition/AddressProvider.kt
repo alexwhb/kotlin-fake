@@ -1,7 +1,6 @@
 package providers.definition
 
 interface AddressProvider : Provider {
-
     val city: String
     val streetAddress: String
     val buildingNumber: String
