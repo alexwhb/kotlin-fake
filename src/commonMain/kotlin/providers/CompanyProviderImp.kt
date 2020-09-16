@@ -1,18 +1,19 @@
 package providers
 
+import Fake.Companion.fake
 import providers.definition.CompanyProvider
 
-class CompanyProviderImp : CompanyProvider {
+class CompanyProviderImp : BaseProvider(), CompanyProvider {
     override val suffix: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("suffix") { fake!!.fetch("company.suffix") }
     override val buzzwords: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("buzzwords") { fake!!.fetch("company.buzzwords") }
     override val bs: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("bs") { fake!!.fetch("company.bs") }
     override val name: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("name") { fake!!.fetch("company.name") }
     override val industry: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("industry") { fake!!.fetch("company.industry") }
     override val profession: String
-        get() = TODO("Not yet implemented")
+        get() = getValue("profession") { fake!!.fetch("company.profession") }
 }
