@@ -1,4 +1,3 @@
 package providers.definition
 
-interface Provider {
-}
+interface Provider {}
