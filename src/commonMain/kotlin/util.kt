@@ -21,6 +21,16 @@ fun assert(b: Boolean, message: String = "") {
     }
 }
 
+// if you just cast a char to an int it will not get you the expected value...
+// it will return the ASCII code so this is the way to get the real numeric value
+// ref: https://stackoverflow.com/questions/47713611/how-do-i-convert-a-digit-char-0-9-to-its-numeric-value
+fun Char.getNumericValue(): Int {
+    if (this !in '0'..'9') {
+        throw NumberFormatException()
+    }
+    return this.toInt() - '0'.toInt()
+}
+
 data class CharSet(val chars: String, val random: Random = Random.Default) {
 
     operator fun plus(value: CharSet): CharSet {
