@@ -232,6 +232,8 @@ class Fake {
         fun uuid(): UuidProvider = getProvider("uuid") { UuidProviderImp() } as UuidProvider
 
         fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
+
+        fun color(): ColorProvider = getProvider("color") {ColorProviderImp()} as ColorProvider
     }
 }
 
