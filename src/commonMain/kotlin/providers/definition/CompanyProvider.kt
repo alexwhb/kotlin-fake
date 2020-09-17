@@ -1,6 +1,6 @@
 package providers.definition
 
-interface CompanyProvider {
+interface CompanyProvider: Provider {
     val suffix: String
     val buzzwords: String
     val bs: String
