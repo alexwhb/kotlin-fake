@@ -1,13 +1,6 @@
 import kotlin.random.Random
 import kotlin.reflect.KClass
 
-
-// todo this still will allow duplicates if we call this multiple times. We need
-// to create some guarantee of uniqueness
-//fun <T> Random.getRandomElement(elements: List<T>): T {
-//    return elements[this.nextInt(0, elements.size - 1)]
-//}
-
 expect fun <T : Any> getResourcePath(klass:KClass<T>, path:String):String
 
 expect fun String.format(local: String, vararg args: Any?): String
@@ -69,18 +62,3 @@ data class CharSet(val chars: String, val random: Random = Random.Default) {
         }
     }
 }
-
-
-//
-//fun replace(
-//    strToBeReplaced: String,
-//    replaceWith: CharSet,
-//    replacePattern: String = "#"
-//): String {
-//    val pattern = Regex(replacePattern)
-//
-//    return pattern.replace(strToBeReplaced) {
-//        replaceWith.getRandomElement()
-//    }
-//}
-
