@@ -6,7 +6,6 @@ import providers.definition.*
 import kotlin.random.Random
 
 class Fake {
-
     private val numeralAndBracesRegEx = "#\\{(.*?)\\}"
     private val numeralRegEx = ".*#(\\{[^a-zA-z]|[^{])+"
     private val numeralOnlyRegEx = "#"
@@ -210,30 +209,26 @@ class Fake {
             }
         }
 
-        fun name(): NameProvider = getProvider("name") { NameProviderImp() } as NameProvider
-
         fun address(): AddressProvider = getProvider("address") { AddressProviderImp() } as AddressProviderImp
-
+        fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
+        fun biased(): BiasedProvider = getProvider("biased") { BiasedProviderImp() } as BiasedProvider
+        fun book(): BookProvider = getProvider("book") { BookProviderImp() } as BookProvider
+        fun color(): ColorProvider = getProvider("color") { ColorProviderImp() } as ColorProvider
+        fun company(): CompanyProvider = getProvider("company") { CompanyProviderImp() } as CompanyProvider
+        fun compass(): CompassProvider = getProvider("compass") { CompassProviderImp() } as CompassProvider
         fun dateTime(): DateTimeProvider = getProvider("dateTime") { DateTimeProviderImp() } as DateTimeProvider
-
         fun demographic(): DemographicProvider =
             getProvider("demographic") { DemographicProviderImp() } as DemographicProvider
-
         fun file(): FileProvider = getProvider("file") { FileProviderImp() } as FileProvider
-
-        fun phone(): PhoneNumberProvider = getProvider("phone") { PhoneNumberProviderImp() } as PhoneNumberProvider
-
+        fun food(): FoodProvider = getProvider("food") { FoodProviderImp() } as FoodProvider
+        fun image(): ImageProvider = getProvider("image") { ImageProviderImp() } as ImageProvider
+        fun internet(): InternetProvider = getProvider("internet") { InternetProviderImp() } as InternetProvider
+        fun job(): JobProvider = getProvider("job") { JobProviderImp() } as JobProvider
         fun lorem(): LoremProvider = getProvider("lorem") { LoremProviderImp() } as LoremProvider
-
-        fun biased(): BiasedProvider = getProvider("biased") { BiasedProviderImp() } as BiasedProvider
-
         fun misc(): MiscellaneousProvider = getProvider("misc") { MiscellaneousProviderImp() } as MiscellaneousProvider
-
+        fun name(): NameProvider = getProvider("name") { NameProviderImp() } as NameProvider
+        fun phone(): PhoneNumberProvider = getProvider("phone") { PhoneNumberProviderImp() } as PhoneNumberProvider
         fun uuid(): UuidProvider = getProvider("uuid") { UuidProviderImp() } as UuidProvider
-
-        fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
-
-        fun color(): ColorProvider = getProvider("color") {ColorProviderImp()} as ColorProvider
     }
 }
 
