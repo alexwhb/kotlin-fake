@@ -1,6 +1,6 @@
 package providers.definition
 
-interface ImageProvider {
+interface ImageProvider : Provider {
 
     val imageUrl: String
 
