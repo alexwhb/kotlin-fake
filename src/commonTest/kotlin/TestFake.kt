@@ -1,3 +1,5 @@
+import com.blackstone.fake.getResourcePath
+import com.blackstone.fake.shuffle
 import kotlin.math.sqrt
 import kotlin.test.*
 
@@ -227,6 +229,15 @@ class TestFake {
 
         assertTrue(colorStr.length > 3, "color string: $colorStr was not longer than 3 characters")
     }
+
+
+    @Test
+    fun `it should get resource`(){
+        val t = getResourcePath(TestFake::class, "/")
+
+        assertNotNull(t)
+    }
+
 
     private fun assertLength(str: String, expectedLength: Int) {
         assertEquals(str.length, expectedLength, "String: $str is ${str.length}.. not $expectedLength")

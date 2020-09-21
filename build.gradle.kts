@@ -21,15 +21,17 @@ kotlin {
     val klock_version = "1.12.0"
     val fs_version = "1.0.10"
 
-    val hostOs = System.getProperty("os.name")
-    val isMingwX64 = hostOs.startsWith("Windows")
-    val nativeTarget = when {
-        hostOs == "Mac OS X" -> macosX64("native")
-        hostOs == "Linux" -> linuxX64("native")
-        isMingwX64 -> mingwX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+//    val hostOs = System.getProperty("os.name")
+//    val isMingwX64 = hostOs.startsWith("Windows")
+//    val nativeTarget = when {
+//        hostOs == "Mac OS X" -> macosX64("native")
+//        hostOs == "Linux" -> linuxX64("native")
+//        isMingwX64 -> mingwX64("native")
+//        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
+//    }
 
+
+    ios()
 
     sourceSets {
         val commonMain by getting {
@@ -63,7 +65,12 @@ kotlin {
             }
         }
 
-        val nativeMain by getting
-        val nativeTest by getting
+        val iosMain by getting {
+            dependencies {
+                implementation ("suparnatural-kotlin-multiplatform:fs-iosx64:$fs_version")
+//                implementation ("suparnatural-kotlin-multiplatform:fs-iosarm64:$fs_version")
+            }
+        }
+        val iosTest by getting
     }
 }

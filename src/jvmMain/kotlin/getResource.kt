@@ -1,3 +1,5 @@
+package com.blackstone.fake
+
 import java.util.*
 import kotlin.reflect.KClass
 
