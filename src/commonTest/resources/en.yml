@@ -6,6 +6,8 @@ en:
       formats: ["MM/dd/yyyy", "MM/dd/yy"]
       format_with_time:
         - "#{formats} #{Time.formats}"
+      format_with_timezone:
+        - "YYYY-MM-DD'T'HH:mm:ss'Z'"
     time:
       formats: ["HH:mm a", "HH:mm"]
 
