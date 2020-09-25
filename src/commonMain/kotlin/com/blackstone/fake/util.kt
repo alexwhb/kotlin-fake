@@ -8,7 +8,11 @@ fun <T> Random.getRandomElement(elements: List<T>): T {
     return elements[this.nextInt(0, elements.size - 1)]
 }
 
-expect fun <T : Any> getResourcePath(klass:KClass<T>, path:String):String
+fun Random.nextFloat(min:Float, max:Float):Float {
+    return this.nextFloat() * (max-min) + min
+}
+
+expect fun <T : Any> readResource(klass:KClass<T>, path:String):String
 
 expect fun String.format(local: String, vararg args: Any?): String
 
