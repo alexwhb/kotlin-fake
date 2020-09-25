@@ -22,4 +22,10 @@ class DateTimeProviderImp : BaseProvider(), DateTimeProvider {
             val dateFormat = DateFormat(getValue("name") { fake!!.fetch("date.format_with_time") })
             return DateTime.now().format(dateFormat)
         }
+
+    override val dateTimeTzFormatter: String
+        get() {
+            val dateFormat = DateFormat(getValue("name") { fake!!.fetch("date.format_with_timezone")})
+            return DateTime.now().format(dateFormat)
+        }
 }
