@@ -8,11 +8,10 @@ import com.soywiz.krypto.sha256
 
 class MiscellaneousProviderImp : MiscellaneousProvider {
     override val boolean: Boolean
-        get() = TODO("Not yet implemented")
+        get() = Fake.fake!!.random.nextBoolean()
 
-    override fun boolean(chanceOfGettingTrue: Int):Boolean {
-       return Fake.fake!!.random.nextInt(1, 100) <= chanceOfGettingTrue;
-    }
+    override fun boolean(chanceOfGettingTrue: Int):Boolean =
+        Fake.fake!!.random.nextInt(1, 100) <= chanceOfGettingTrue
 
     override val md5: String
         get() = Fake.fake!!.random.nextInt().toString().encodeToByteArray().md5().hex
