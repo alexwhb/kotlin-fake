@@ -1,6 +1,7 @@
 plugins {
-    kotlin("multiplatform") version "1.4.0"
-    kotlin("plugin.serialization") version "1.4.0"
+    kotlin("multiplatform") //version "1.4.0"
+    kotlin("plugin.serialization") // version "1.4.0"
+    kotlin("native.cocoapods")
 }
 group = "com.blackstone"
 version = "1.0-SNAPSHOT"
@@ -19,7 +20,7 @@ kotlin {
         }
     }
     val klock_version = "1.12.0"
-    val fs_version = "1.0.10"
+//    val fs_version = "1.0.10"
 
 //    val hostOs = System.getProperty("os.name")
 //    val isMingwX64 = hostOs.startsWith("Windows")
@@ -36,7 +37,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("suparnatural-kotlin-multiplatform:fs-metadata:$fs_version")
+//                implementation("suparnatural-kotlin-multiplatform:fs-metadata:$fs_version")
                 implementation("net.mamoe.yamlkt:yamlkt:0.5.1")
 
                 implementation("com.soywiz.korlibs.krypto:krypto:1.12.0")
@@ -55,7 +56,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("suparnatural-kotlin-multiplatform:fs-jvm:$fs_version")
+//                implementation("suparnatural-kotlin-multiplatform:fs-jvm:$fs_version")
                 implementation("com.soywiz.korlibs.klock:klock-jvm:$klock_version")
             }
         }
@@ -67,7 +68,7 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
-                implementation ("suparnatural-kotlin-multiplatform:fs-iosx64:$fs_version")
+//                implementation ("suparnatural-kotlin-multiplatform:fs-iosx64:$fs_version")
 //                implementation ("suparnatural-kotlin-multiplatform:fs-iosarm64:$fs_version")
             }
         }
