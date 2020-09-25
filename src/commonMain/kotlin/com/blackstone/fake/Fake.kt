@@ -1,7 +1,5 @@
 package com.blackstone.fake
 
-import com.suparnatural.core.fs.ContentEncoding
-import com.suparnatural.core.fs.FileSystem
 import net.mamoe.yamlkt.Yaml
 import com.blackstone.fake.providers.*
 import com.blackstone.fake.providers.definition.*
@@ -26,9 +24,9 @@ class Fake {
 
 
     private fun getValues(stringLocale: String): LinkedHashMap<String, LinkedHashMap<String, String>> {
-        val path = getResourcePath(Fake::class, "/en.yml")
+        val yamlFile = readResource(Fake::class, "/en.yml")
 
-        val yamlFile = FileSystem.readFile(path, ContentEncoding.Utf8)!!
+//        val yamlFile = FileSystem.readFile(path, ContentEncoding.Utf8)!!
 
         val yamlValuesDefault = yaml.decodeMapFromString(yamlFile) as Map<*, *>
         val localeValuesDefault = yamlValuesDefault[stringLocale] as Map<*, *>
@@ -188,18 +186,18 @@ class Fake {
 
         fun getUniqueValue(): Boolean = fake?.uniqueValueActive ?: false
 
-        fun init(): Fake {
-            if (fake == null) {
-                fake = Fake()
-            }
-            return fake!!
-        }
-
         fun changeUniqueValueState() {
             fake?.uniqueValueActive = fake?.let { !it.uniqueValueActive } ?: false
         }
 
+        private fun init(){
+            if (fake == null){
+                fake = Fake()
+            }
+        }
+
         private fun getProvider(key: String, provider: () -> Provider): Provider {
+            init()
             if (fake == null) {
                 throw Exception("Fake it not ready. Did you forgot to call init?")
             } else {
@@ -211,6 +209,7 @@ class Fake {
             }
         }
 
+        fun random(): Random { init(); return fake!!.random }
         fun address(): AddressProvider = getProvider("address") { AddressProviderImp() } as AddressProviderImp
         fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
         fun biased(): BiasedProvider = getProvider("biased") { BiasedProviderImp() } as BiasedProvider
