@@ -3,7 +3,7 @@ package com.blackstone.fake
 import kotlin.reflect.KClass
 
 
-actual fun <T : Any> getResourcePath(klass: KClass<T>, path: String): String {
+actual fun <T : Any> readResource(klass: KClass<T>, path: String): String {
    return "" // TODO
 }
 
