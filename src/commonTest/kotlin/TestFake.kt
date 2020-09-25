@@ -1,4 +1,5 @@
-import com.blackstone.fake.getResourcePath
+import com.blackstone.fake.Fake
+import com.blackstone.fake.readResource
 import com.blackstone.fake.shuffle
 import kotlin.math.sqrt
 import kotlin.test.*
@@ -8,7 +9,6 @@ class TestFake {
 
     @Test
     fun `it should provide a fake name`() {
-        Fake.init()
         val name = Fake.name().name
         assertNotNull(name)
         assertTrue(name.split(" ").size == 2)
@@ -16,7 +16,6 @@ class TestFake {
 
     @Test
     fun `it should provide a fake first name`() {
-        Fake.init()
         val fistName = Fake.name().firstName
 
         assertNotNull(fistName)
@@ -24,7 +23,6 @@ class TestFake {
 
     @Test
     fun `it should provide an address`() {
-        Fake.init()
         val streetAddress = Fake.address().streetAddress
         val city = Fake.address().city
         val state = Fake.address().state
@@ -41,8 +39,6 @@ class TestFake {
 
     @Test
     fun `it should create a formatted date`() {
-        Fake.init()
-
         val date = Fake.dateTime().dateFormatter
 
         assertNotNull(date)
@@ -52,8 +48,6 @@ class TestFake {
 
     @Test
     fun `it should return demographic data`() {
-        Fake.init()
-
         val race = Fake.demographic().race
         val sex = Fake.demographic().sex
         val maritalStatus = Fake.demographic().maritalStatus
@@ -65,8 +59,6 @@ class TestFake {
 
     @Test
     fun `it should return file data`() {
-        Fake.init()
-
         val mimeType = Fake.file().mimeType
         val extension = Fake.file().extension
 
@@ -78,8 +70,6 @@ class TestFake {
 
     @Test
     fun `it should provide a phone number`() {
-        Fake.init()
-
         val phoneNumber = Fake.phone().formats()
 
         assertNotNull(phoneNumber)
@@ -87,7 +77,6 @@ class TestFake {
 
     @Test
     fun `it should provide a fake sentence`() {
-        Fake.init()
         val text = Fake.lorem().sentence()
 
         assertNotNull(text)
@@ -96,7 +85,6 @@ class TestFake {
 
     @Test
     fun `it should generate more than one sentence`(){
-        Fake.init()
         val paragraph = Fake.lorem().paragraph()
 
         assertNotNull(paragraph)
@@ -106,7 +94,6 @@ class TestFake {
 
     @Test
     fun `it should create an MD5 hash`(){
-        Fake.init()
         val hash = Fake.misc().md5
         val hash2 = Fake.misc().md5
 
@@ -117,7 +104,6 @@ class TestFake {
 
     @Test
     fun `it should create a UUID`() {
-        Fake.init()
         val uuid = Fake.uuid().uuid
 
         assertNotNull(uuid)
@@ -125,7 +111,6 @@ class TestFake {
 
     @Test
     fun `it should create a sha1 hash`(){
-        Fake.init()
         val hash = Fake.misc().sha1
         val hash2 = Fake.misc().sha1
 
@@ -136,7 +121,6 @@ class TestFake {
 
     @Test
     fun `it should create a sha256 hash`(){
-        Fake.init()
         val hash = Fake.misc().sha256
         val hash2 = Fake.misc().sha256
 
@@ -148,7 +132,6 @@ class TestFake {
 
     @Test
     fun `it should create an isbn10 code`() {
-        Fake.init()
         val isbn = Fake.barcode().isbn10
         val isbn1 = Fake.barcode().isbn10
 
@@ -160,7 +143,6 @@ class TestFake {
 
     @Test
     fun `it should create an ISBN13 code`(){
-        Fake.init()
         val isbn = Fake.barcode().isbn13
         val isbn1 = Fake.barcode().isbn13
 
@@ -173,7 +155,6 @@ class TestFake {
     @Ignore
     @Test
     fun `it should return a biased number`(){
-        Fake.init()
         val biasedNumber = Fake.biased().biasedNumberBetween { sqrt(it) }
         val biasedNumber2 = Fake.biased().biasedNumberBetween { sqrt(it) }
 
@@ -189,7 +170,6 @@ class TestFake {
 
     @Test
     fun `it should produce a hex color code`(){
-        Fake.init()
         val t = Fake.color().hexColor
         assertNotNull(t)
         assertLength(t, 7)
@@ -198,7 +178,6 @@ class TestFake {
 
     @Test
     fun `it should produce a safe hex color code`(){
-        Fake.init()
         val t = Fake.color().safeHexColor
         assertNotNull(t)
         assertLength(t, 7)
@@ -207,7 +186,6 @@ class TestFake {
 
     @Test
     fun `it should generate an RGB value`(){
-        Fake.init()
         val t = Fake.color().cssRgbColor
         assertTrue(t.startsWith("rgb("))
         assertNotNull(t)
@@ -215,7 +193,6 @@ class TestFake {
 
     @Test
     fun `it should generate an RGBA value`(){
-        Fake.init()
         val t =  Fake.color().rgbaCssColor
 
         assertTrue(t.startsWith("rgba("))
@@ -224,7 +201,6 @@ class TestFake {
 
     @Test
     fun `it should return a color string`(){
-        Fake.init()
         val colorStr = Fake.color().colorName
 
         assertTrue(colorStr.length > 3, "color string: $colorStr was not longer than 3 characters")
@@ -233,7 +209,7 @@ class TestFake {
 
     @Test
     fun `it should get resource`(){
-        val t = getResourcePath(TestFake::class, "/")
+        val t = readResource(TestFake::class, "/")
 
         assertNotNull(t)
     }
