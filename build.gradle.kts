@@ -46,17 +46,11 @@ kotlin {
             }
         }
         val jvmMain by getting
-//        {
-////            dependencies {
-////                implementation("com.soywiz.korlibs.klock:klock-jvm:$klock_version")
-////            }
-//        }
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
         }
-
         val iosMain by getting
         val iosTest by getting
     }
