@@ -186,7 +186,7 @@ class Fake {
     companion object Companion {
         var fake: Fake = Fake()
 
-        var providers = HashMap<String, Provider>()
+        private val providers = HashMap<String, Provider>()
 
         fun getUniqueValue(): Boolean = fake.uniqueValueActive
 
@@ -194,7 +194,7 @@ class Fake {
             fake.uniqueValueActive = !fake.uniqueValueActive
         }
 
-        private fun getProvider(key: String, provider: () -> Provider): Provider {
+        fun getProvider(key: String, provider: () -> Provider): Provider {
             return providers[key] ?: run {
                 val auxProvider = provider()
                 providers[key] = auxProvider
@@ -203,7 +203,6 @@ class Fake {
         }
 
         fun random(): Random { return fake.random }
-
         fun address(): AddressProvider = getProvider("address") { AddressProviderImp() } as AddressProviderImp
         fun barcode(): BarcodeProvider = getProvider("barcode") { BarcodeProviderImp() } as BarcodeProvider
         fun biased(): BiasedProvider = getProvider("biased") { BiasedProviderImp() } as BiasedProvider
