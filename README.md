@@ -1,4 +1,5 @@
-# kotlin-fake
+# Kotlin Fake
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 A data faker library that works with Kotlin Multiplatform. 
 
 This library was inspired by a lot of the good faking libraries out there already, 
