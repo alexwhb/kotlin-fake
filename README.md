@@ -39,13 +39,56 @@ inline fun buildBookmark(init: BookmarkBuilder.() -> Unit): Bookmark {
 
 Then when I want to build a bookmark I can just go like this: 
 ```kotlin
-val bookmark = buildBookmark {/* And in here I can override any of the properties that I don't want faker generating */}
+val bookmark = buildBookmark {
+    /* And in here I can override any of the properties that I don't want faker generating */
+}
 ```
 
-I also use this in conjunction with Ktor in order to fake API responses.. I use much the same pattern, but use 
-serializable objects instead so they can be easily converted to JSON and I return those from a fake Ktor API. 
+I also use this in conjunction with Ktor in order to fake API responses. I use much the same pattern, but use 
+serializable objects instead, so they can be easily converted to JSON and I return those from a fake Ktor API. 
+
+###  How to Add  a New Generator
+You might want to add a new generator for a data type that is custom to your app and this system does not 
+already include. This is not hard to do. 
+
+```kotlin
+// Note that we extend provider interface here. This is needed for the getProvider method to register your provider
+class CustomTypeGenerator: Provider {
+
+  fun test(): String {
+    return "my custom data"
+  }
+
+  // you can use Fake to build your own custom generator types
+  fun test2(): String {
+    return "${Fake.random().nextInt()}-${Fake.random().nextInt()}"
+  }
+}
+
+fun someFunction() {
+  Fake.customName().test()
+  Fake.customName().test2()
+}
+
+// This is how we register our custom provider, so we can use it anywhere where Fake is accessible
+private fun Fake.Companion.customName(): CustomTypeGenerator = 
+    // this getProvider string should be unique to this provider otherwise you might have nasty exceptions
+    getProvider("test") { CustomTypeGenerator() } as CustomTypeGenerator
+
+```
 
 
+### Known Issues and Things That Can Improve
+* I don't currently support the native platform. I fixed this for my own 
+  local dev environment by editing the `getResources.kt` file in `iOSMain` and updating 
+  ` 
+  val path = ""
+   `
+To be the absolute path to the `commonTest/resources/en.yml` which is needed in order to generate many of
+  the fake data properties. I'd love to fix this in the future. The current issue is that iOS creates a 
+  Emulator folder on your computer somewhere that is not local to the project, so when you try to load the
+  file it's not realitive to where your project is at all... Probably the way to solve this would be to 
+  add that file, in the gradle build process, to your emulator root dir. 
 
 ## Influences: 
 [Fakeit](https://github.com/moove-it/fakeit)    
