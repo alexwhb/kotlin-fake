@@ -3,9 +3,10 @@ plugins {
     kotlin("plugin.serialization") version "1.5.30"
 //    kotlin("native.cocoapods") version "1.5.21"
     id("maven-publish")
+//    id("org.jetbrains.dokka") version "1.5.30"
 }
 group = "com.blackstone"
-version = "0.1.0-SNAPSHOT"
+version = "0.1.5"
 
 repositories {
     gradlePluginPortal()

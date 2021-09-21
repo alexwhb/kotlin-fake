@@ -28,7 +28,7 @@ sourceSets {
   val commonMain by getting {
     dependencies {
       ...
-      implementation("com.blackstone:Fake:0.1.0")
+      implementation("com.blackstone:Fake:0.1.5")
         ...
     }
   }
