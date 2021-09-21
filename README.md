@@ -11,6 +11,34 @@ This project builds off of a lot of really great code that is out there. A word 
 I have not yet written any of the implementation for loading files on native. If you'd like to contribute please send me 
 a PR... I'd be happy to merge it in if it looks goods. 
 
+## How to add to your project
+Add the repository to your project's `build.gradle.kts`. I'm using kotlin for my gradle syntax, but groovy 
+will be pretty similar if that's what you use
+```kotlin 
+repositories {
+    ...
+    maven("https://repos.awhb.dev")
+    ...
+}
+```
+
+add following in your commonMain source set
+```kotlin
+sourceSets {
+  val commonMain by getting {
+    dependencies {
+      ...
+      implementation("com.blackstone:Fake:0.1.0")
+        ...
+    }
+  }
+}
+  ...
+```
+
+
+
+
 ## Examples of how to use
 
 In my App I am creating a Redux style state management system, so here's an example of how I use this
