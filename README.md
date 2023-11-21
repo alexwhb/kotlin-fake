@@ -11,13 +11,13 @@ This project builds off of a lot of really great code that is out there. A word 
 I have not yet written any of the implementation for loading files on native. If you'd like to contribute please send me 
 a PR... I'd be happy to merge it in if it looks goods. 
 
-## How to add to your project
+## How to Add Kotlin Fake to Your Project
 Add the repository to your project's `build.gradle.kts`. I'm using kotlin for my gradle syntax, but groovy 
 will be pretty similar if that's what you use
 ```kotlin 
 repositories {
     ...
-    maven("https://repos.awhb.dev")
+    maven("https://repos.awhb.dev/releases")
     ...
 }
 ```
