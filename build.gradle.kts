@@ -25,7 +25,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("net.mamoe.yamlkt:yamlkt:0.12.0")
-                implementation("com.soywiz.korlibs.krypto:krypto:2.4.12")
+                implementation("com.squareup.okio:okio:3.9.0")
                 implementation( "com.benasher44:uuid:0.4.0")
                 implementation("com.soywiz.korlibs.klock:klock:2.4.13")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.2")

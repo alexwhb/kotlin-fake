@@ -2,9 +2,7 @@ package com.blackstone.fake.providers
 
 import com.blackstone.fake.Fake
 import com.blackstone.fake.providers.definition.MiscellaneousProvider
-import com.soywiz.krypto.md5
-import com.soywiz.krypto.sha1
-import com.soywiz.krypto.sha256
+import okio.ByteString.Companion.encodeUtf8
 
 class MiscellaneousProviderImp : MiscellaneousProvider {
     override val boolean: Boolean
@@ -14,11 +12,11 @@ class MiscellaneousProviderImp : MiscellaneousProvider {
         Fake.fake.random.nextInt(1, 100) <= chanceOfGettingTrue
 
     override val md5: String
-        get() = Fake.fake.random.nextInt().toString().encodeToByteArray().md5().hex
+        get() = Fake.fake.random.nextInt().toString().encodeUtf8().md5().hex()
     override val sha1: String
-        get() =  Fake.fake.random.nextInt().toString().encodeToByteArray().sha1().hex
+        get() = Fake.fake.random.nextInt().toString().encodeUtf8().sha1().hex()
     override val sha256: String
-        get() = Fake.fake.random.nextInt().toString().encodeToByteArray().sha256().hex
+        get() = Fake.fake.random.nextInt().toString().encodeUtf8().sha256().hex()
     override val locale: String
         get() = TODO("Not yet implemented")
     override val countryCode: String
